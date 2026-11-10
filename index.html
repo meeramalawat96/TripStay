@@ -506,12 +506,13 @@ function sendWhatsApp() {
         "Estimated Price: Rs. " + calculatedTotal;
 
     // Replace with hotel-approved WhatsApp number before publishing.
-    let phone = "917734807127";
+    // Your WhatsApp number
+let phone = "917734807127";
 
-    window.open(
-        "https://wa.me/" + phone + "?text=" + message,
-        "_blank"
-    );
+window.open(
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
+    "_blank"
+);
 }
 
 </script>
