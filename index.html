@@ -1,11 +1,10 @@
+```html
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>TripStay | Hotel Booking</title>
+<title>TripStay | Find Your Perfect Stay</title>
 
 <style>
 * {
@@ -16,46 +15,45 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f5f6f8;
-    color: #333;
+    color: #253044;
+    background: #f5f7fb;
 }
 
-/* HEADER */
 header {
-    background: #173b52;
-    color: white;
-    padding: 20px 7%;
+    background: white;
+    padding: 18px 7%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    box-shadow: 0 2px 10px #00000012;
 }
 
 .logo {
-    font-size: 28px;
+    font-size: 27px;
     font-weight: bold;
-    color: #f4ae48;
+    color: #087e8b;
+}
+
+.logo span {
+    color: #f29e38;
 }
 
 nav a {
-    color: white;
     text-decoration: none;
-    margin-left: 20px;
+    margin-left: 22px;
+    color: #253044;
+    font-weight: bold;
 }
 
-/* HERO */
 .hero {
-    background: linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
-    url("https://images.unsplash.com/photo-1566073771259-6a8506099945");
+    background: linear-gradient(#092b42aa,#092b42aa),
+    url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1600&q=85');
     background-size: cover;
     background-position: center;
-    min-height: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    min-height: 390px;
     color: white;
-    padding: 30px;
+    text-align: center;
+    padding: 85px 20px;
 }
 
 .hero h1 {
@@ -67,21 +65,58 @@ nav a {
     font-size: 18px;
 }
 
-/* SECTION */
-.section {
-    padding: 45px 7%;
+.search-box {
+    background: white;
+    max-width: 950px;
+    margin: 35px auto 0;
+    padding: 20px;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.search-box input,
+.search-box select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+}
+
+.search-box button {
+    grid-column: 1 / -1;
+}
+
+button {
+    background: #087e8b;
+    color: white;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #05616b;
+}
+
+.container {
+    max-width: 1150px;
+    margin: auto;
+    padding: 45px 20px;
 }
 
 .section-title {
     text-align: center;
+    font-size: 30px;
     margin-bottom: 30px;
-    color: #173b52;
 }
 
-/* HOTEL CARDS */
 .hotel-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
     gap: 25px;
 }
 
@@ -89,7 +124,7 @@ nav a {
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 3px 12px rgba(0,0,0,.1);
+    box-shadow: 0 3px 15px #00000012;
 }
 
 .hotel-card img {
@@ -103,437 +138,589 @@ nav a {
 }
 
 .hotel-info h3 {
-    color: #173b52;
-    margin-bottom: 10px;
+    margin-bottom: 9px;
 }
 
-.hotel-info p {
-    margin: 8px 0;
-    line-height: 1.5;
+.location {
+    color: #777;
+    margin-bottom: 12px;
 }
 
 .price {
-    color: #18834b;
-    font-size: 21px;
+    color: #087e8b;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.hotel-info button {
+    width: 100%;
+}
+
+.booking-section {
+    background: white;
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 3px 15px #00000012;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    background: white;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+.result-box {
+    background: #eaf8f8;
+    padding: 20px;
+    margin-top: 22px;
+    border-radius: 9px;
+    display: none;
+}
+
+.result-box h3 {
+    color: #087e8b;
+    margin-bottom: 12px;
+}
+
+.result-box p {
+    margin: 8px 0;
+}
+
+.result-price {
+    font-size: 25px;
     font-weight: bold;
     margin: 15px 0;
 }
 
-.book-btn {
-    display: block;
-    text-align: center;
-    background: #e69b35;
-    color: white;
-    padding: 12px;
-    text-decoration: none;
-    border-radius: 6px;
-    margin-top: 12px;
+.booking-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
 }
 
-/* BOOKING CALCULATOR */
-.booking-box {
-    max-width: 650px;
-    margin: auto;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 3px 15px rgba(0,0,0,.1);
+.whatsapp {
+    background: #159c55;
 }
 
-.booking-box label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-.booking-box input,
-.booking-box select {
-    width: 100%;
-    padding: 12px;
-    margin-top: 7px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-.calculate-btn,
-.whatsapp-btn {
-    width: 100%;
-    padding: 14px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 6px;
-    background: #173b52;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.whatsapp-btn {
-    background: #25D366;
-}
-
-.total {
-    margin-top: 20px;
-    padding: 18px;
-    background: #eaf5ef;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
-    color: #176b3a;
-}
-
-.small-note {
-    font-size: 12px;
-    color: #777;
-    margin-top: 12px;
-}
-
-/* WHY US */
-.why-box {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-    gap: 20px;
-    text-align: center;
-}
-
-.why-item {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-}
-
-/* FOOTER */
 footer {
-    background: #173b52;
+    background: #102e42;
     color: white;
     text-align: center;
-    padding: 25px;
+    padding: 30px 15px;
+    margin-top: 40px;
 }
 
-@media(max-width:600px) {
+footer p {
+    margin: 8px;
+}
+
+@media(max-width:650px) {
     header {
+        flex-direction: column;
         gap: 15px;
     }
 
     nav a {
-        margin-left: 10px;
+        margin: 0 7px;
         font-size: 13px;
     }
 
     .hero h1 {
         font-size: 30px;
     }
+
+    .search-box,
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full {
+        grid-column: auto;
+    }
 }
 </style>
-
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
-    <div class="logo">TripStay</div>
-
-<nav>
-    <a href="#home">Home</a>
-    <a href="#hotels">Hotels</a>
-    <a href="#booking">Booking</a>
-    <a href="#contact">Contact</a>
-</nav>
-
+    <div class="logo">Trip<span>Stay</span></div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#hotels">Hotels</a>
+        <a href="#booking">Booking</a>
+        <a href="#contact">Contact</a>
+    </nav>
 </header>
 
-<!-- HERO -->
-
 <section class="hero" id="home">
-    <div>
-        <h1>Discover Your Perfect Stay</h1>
-        <p>Book beautiful hotels and resorts with TripStay</p>
+    <h1>Find Your Perfect Stay</h1>
+    <p>Discover beautiful hotels and resorts with TripStay.</p>
+
+    <div class="search-box">
+        <input type="text" id="searchLocation"
+        placeholder="Enter destination" value="Pushkar">
+
+        <input type="date" id="searchCheckin">
+
+        <input type="date" id="searchCheckout">
+
+        <button onclick="searchHotels()">Search Hotels</button>
     </div>
 </section>
 
-<!-- HOTELS -->
+<section class="container" id="hotels">
+    <h2 class="section-title">Popular Hotels in Pushkar</h2>
 
-<section class="section" id="hotels">
+    <div class="hotel-grid" id="hotelGrid">
 
-<h2 class="section-title">Popular Hotels in Pushkar</h2>
+        <div class="hotel-card">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Hotel representative image">
+            <div class="hotel-info">
+                <h3>Ret Mahal Huts & Resort</h3>
+                <p class="location">Pushkar, Rajasthan</p>
+                <p>Beautiful stay with a peaceful atmosphere.</p>
+                <div class="price">Starting ₹2,000 / night</div>
+                <button onclick="selectHotel('Ret Mahal Huts & Resort',2000)">
+                    Book / Enquire
+                </button>
+            </div>
+        </div>
 
-<div class="hotel-grid">
+        <div class="hotel-card">
+            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80" alt="Sample resort">
+            <div class="hotel-info">
+                <h3>Luxury Palace Resort</h3>
+                <p class="location">Pushkar, Rajasthan</p>
+                <p>Sample hotel listing for demonstration.</p>
+                <div class="price">Starting ₹3,000 / night</div>
+                <button onclick="selectHotel('Luxury Palace Resort',3000)">
+                    Book / Enquire
+                </button>
+            </div>
+        </div>
 
-<!-- RET MAHAL -->
-<div class="hotel-card">
-
-    <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32"
-         alt="Representative hotel room image">
-
-    <div class="hotel-info">
-
-        <h3>Ret Mahal Huts & Resort</h3>
-
-        <p>📍 Savitri Mata Temple Road, Pushkar, Rajasthan</p>
-
-        <p>🏨 Resort | Restaurant | Comfortable Stay</p>
-
-        <div class="price">Starting ₹2,000 / Night</div>
-
-        <a href="#booking" class="book-btn">Check Meal Plans & Price</a>
-
-        <p class="small-note">
-            Representative image, not an actual hotel photograph.
-        </p>
+        <div class="hotel-card">
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" alt="Sample resort">
+            <div class="hotel-info">
+                <h3>Desert View Resort</h3>
+                <p class="location">Pushkar, Rajasthan</p>
+                <p>Sample hotel listing for demonstration.</p>
+                <div class="price">Starting ₹2,500 / night</div>
+                <button onclick="selectHotel('Desert View Resort',2500)">
+                    Book / Enquire
+                </button>
+            </div>
+        </div>
 
     </div>
-</div>
+    <p id="noHotels" style="display:none;text-align:center;margin-top:20px;">
+        No hotels found for this destination.
+    </p>
+</section>
 
-<!-- DEMO HOTEL 2 -->
-<div class="hotel-card">
+<section class="container" id="booking">
+    <h2 class="section-title">Calculate Your Booking Price</h2>
 
-    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945"
-         alt="Sample resort">
+    <div class="booking-section">
 
-    <div class="hotel-info">
-        <h3>Luxury Palace Resort</h3>
-        <p>📍 Pushkar, Rajasthan</p>
-        <p>🏨 Luxury Stay | Swimming Pool</p>
-        <div class="price">Starting ₹3,500 / Night</div>
-        <a href="#booking" class="book-btn">Explore</a>
+        <div class="form-grid">
+
+            <div class="form-group full">
+                <label>Select Hotel</label>
+                <select id="hotel">
+                    <option value="Ret Mahal Huts & Resort">Ret Mahal Huts & Resort</option>
+                    <option value="Luxury Palace Resort">Luxury Palace Resort</option>
+                    <option value="Desert View Resort">Desert View Resort</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Check-in Date</label>
+                <input type="date" id="checkin">
+            </div>
+
+            <div class="form-group">
+                <label>Check-out Date</label>
+                <input type="date" id="checkout">
+            </div>
+
+            <div class="form-group">
+                <label>Rooms</label>
+                <input type="number" id="rooms" min="1" value="1">
+            </div>
+
+            <div class="form-group">
+                <label>Adults</label>
+                <input type="number" id="adults" min="1" value="2">
+            </div>
+
+            <div class="form-group">
+                <label>Children</label>
+                <input type="number" id="children" min="0" value="0">
+            </div>
+
+            <div class="form-group">
+                <label>Meal Plan</label>
+                <select id="mealPlan">
+                    <option value="EP">EP - Only Room</option>
+                    <option value="CP">CP - Room + Breakfast</option>
+                    <option value="MAP">MAP - Room + Breakfast + Dinner</option>
+                    <option value="AP">AP - Room + All Meals</option>
+                </select>
+            </div>
+
+        </div>
+
+        <button style="margin-top:22px;width:100%;"
+        onclick="calculatePrice()">
+            Calculate Total Price
+        </button>
+
+        <div class="result-box" id="resultBox">
+            <h3>Booking Price Details</h3>
+
+            <p id="hotelResult"></p>
+            <p id="dateResult"></p>
+            <p id="nightResult"></p>
+            <p id="roomResult"></p>
+            <p id="guestResult"></p>
+            <p id="mealResult"></p>
+
+            <p class="result-price" id="totalResult"></p>
+
+            <div class="booking-buttons">
+                <button class="whatsapp" onclick="sendWhatsApp()">
+                    Send Enquiry on WhatsApp
+                </button>
+            </div>
+
+            <p style="font-size:13px;margin-top:12px;">
+                This is an estimated price. Final price and room availability
+                must be confirmed by the hotel.
+            </p>
+        </div>
+
     </div>
-</div>
+</section>
 
-<!-- DEMO HOTEL 3 -->
-<div class="hotel-card">
+<section class="container">
+    <h2 class="section-title">Why Choose TripStay?</h2>
+    <div class="hotel-grid">
+        <div class="hotel-card hotel-info">
+            <h3>🏨 Hotel Choices</h3>
+            <p>Explore different hotels and resorts.</p>
+        </div>
 
-    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb"
-         alt="Sample hotel">
+        <div class="hotel-card hotel-info">
+            <h3>💰 Easy Price Calculation</h3>
+            <p>Calculate your estimated booking amount.</p>
+        </div>
 
-    <div class="hotel-info">
-        <h3>Desert View Resort</h3>
-        <p>📍 Pushkar, Rajasthan</p>
-        <p>🏨 Resort | Restaurant</p>
-        <div class="price">Starting ₹2,800 / Night</div>
-        <a href="#booking" class="book-btn">Explore</a>
+        <div class="hotel-card hotel-info">
+            <h3>📱 WhatsApp Enquiry</h3>
+            <p>Send your booking enquiry directly.</p>
+        </div>
     </div>
-</div>
-
-</div>
 </section>
-
-<!-- BOOKING CALCULATOR -->
-
-<section class="section" id="booking">
-
-<h2 class="section-title">Ret Mahal Booking & Price Calculator</h2>
-
-<div class="booking-box">
-
-<h3 style="text-align:center;color:#173b52;">
-    Select Your Stay Details
-</h3>
-
-<label>Check-in Date</label>
-<input type="date" id="checkin">
-
-<label>Check-out Date</label>
-<input type="date" id="checkout">
-
-<label>Meal Plan</label>
-<select id="plan">
-    <option value="2000">EP - Only Room (₹2,000)</option>
-    <option value="2500">CP - Room + Breakfast (₹2,500)</option>
-    <option value="3000">MAP - Room + Breakfast + Lunch/Dinner (₹3,000)</option>
-    <option value="3500">AP - Room + Breakfast + Lunch (₹3,500)</option>
-</select>
-
-<label>Number of Rooms</label>
-<input type="number" id="rooms" value="1" min="1">
-
-<label>Number of Adults</label>
-<input type="number" id="adults" value="2" min="1">
-
-<label>Number of Children</label>
-<input type="number" id="children" value="0" min="0">
-
-<button class="calculate-btn" onclick="calculatePrice()">
-    Calculate Total Price
-</button>
-
-<div class="total" id="result">
-    Total Price: ₹0
-</div>
-
-<button class="whatsapp-btn" onclick="sendWhatsApp()">
-    Enquire on WhatsApp
-</button>
-
-<p class="small-note">
-    *All prices are sample rates for demonstration.
-    Final tariff and room availability must be confirmed by the hotel.
-</p>
-
-</div>
-</section>
-
-<!-- WHY CHOOSE US -->
-
-<section class="section">
-
-<h2 class="section-title">Why Choose TripStay?</h2>
-
-<div class="why-box">
-
-<div class="why-item">
-    <h3>🏨</h3>
-    <h3>Best Hotels</h3>
-    <p>Discover comfortable stays.</p>
-</div>
-
-<div class="why-item">
-    <h3>💰</h3>
-    <h3>Easy Enquiry</h3>
-    <p>Contact hotels directly.</p>
-</div>
-
-<div class="why-item">
-    <h3>🌍</h3>
-    <h3>Explore Places</h3>
-    <p>Discover beautiful destinations.</p>
-</div>
-
-</div>
-</section>
-
-<!-- FOOTER -->
 
 <footer id="contact">
     <h2>TripStay</h2>
-    <p>Your Stay, Your Way.</p>
+    <p>Your Stay, Our Priority.</p>
     <p>Pushkar, Rajasthan, India</p>
     <p>© 2026 TripStay. All Rights Reserved.</p>
 </footer>
 
 <script>
 
-// SET MINIMUM DATE TO TODAY
-let today = new Date().toISOString().split("T")[0];
-document.getElementById("checkin").min = today;
-document.getElementById("checkout").min = today;
+// ====================================
+// TRIPSTAY SETTINGS
+// ====================================
 
-document.getElementById("checkin").addEventListener("change", function() {
-    document.getElementById("checkout").min = this.value;
+// Replace this with your own WhatsApp number.
+// Use country code 91, without + or spaces.
+const phone = "917734807127";
 
-    if (document.getElementById("checkout").value &&
-        document.getElementById("checkout").value <= this.value) {
-        document.getElementById("checkout").value = "";
+// Illustrative meal-plan prices per room per night.
+// Replace with hotel-approved tariffs before accepting bookings.
+const mealPrices = {
+    EP: 2000,
+    CP: 2500,
+    MAP: 3000,
+    AP: 3500
+};
+
+// Illustrative additional guest charges per night.
+const extraAdultCharge = 500;
+const childCharge = 300;
+
+// Two adults per room are included in the room price.
+let bookingData = null;
+
+// Hotel starting prices for demo listings.
+const hotelPrices = {
+    "Ret Mahal Huts & Resort": 2000,
+    "Luxury Palace Resort": 3000,
+    "Desert View Resort": 2500
+};
+
+// ====================================
+// DATE SETTINGS
+// ====================================
+
+const today = new Date();
+const todayString = [
+    today.getFullYear(),
+    String(today.getMonth()+1).padStart(2,"0"),
+    String(today.getDate()).padStart(2,"0")
+].join("-");
+
+document.getElementById("checkin").min = todayString;
+document.getElementById("checkout").min = todayString;
+document.getElementById("searchCheckin").min = todayString;
+document.getElementById("searchCheckout").min = todayString;
+
+// ====================================
+// HOTEL SELECTION
+// ====================================
+
+function selectHotel(name, price) {
+    document.getElementById("hotel").value = name;
+
+    if(name === "Ret Mahal Huts & Resort") {
+        mealPrices.EP = 2000;
+        mealPrices.CP = 2500;
+        mealPrices.MAP = 3000;
+        mealPrices.AP = 3500;
     }
-});
 
-let calculatedTotal = 0;
+    document.getElementById("booking").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+// ====================================
+// CALCULATE TOTAL PRICE
+// ====================================
 
 function calculatePrice() {
 
-    let planRate = Number(document.getElementById("plan").value);
-    let rooms = Number(document.getElementById("rooms").value);
-    let adults = Number(document.getElementById("adults").value);
-    let children = Number(document.getElementById("children").value);
+    const hotel = document.getElementById("hotel").value;
 
-    let checkin = document.getElementById("checkin").value;
-    let checkout = document.getElementById("checkout").value;
+    const checkin = document.getElementById("checkin").value;
+    const checkout = document.getElementById("checkout").value;
 
-    if (rooms < 1 || adults < 1 || children < 0 ||
-        !Number.isInteger(rooms) ||
-        !Number.isInteger(adults) ||
-        !Number.isInteger(children)) {
-        alert("Please enter valid room and guest numbers.");
-        return;
-    }
+    const rooms = Number(document.getElementById("rooms").value);
+    const adults = Number(document.getElementById("adults").value);
+    const children = Number(document.getElementById("children").value);
 
-    if (!checkin || !checkout) {
+    const mealPlan = document.getElementById("mealPlan").value;
+
+    if(!checkin || !checkout) {
         alert("Please select check-in and check-out dates.");
         return;
     }
 
-    let start = new Date(checkin + "T00:00:00");
-    let end = new Date(checkout + "T00:00:00");
+    const start = new Date(checkin + "T00:00:00");
+    const end = new Date(checkout + "T00:00:00");
 
-    let nights = (end - start) / (1000 * 60 * 60 * 24);
+    const nights = Math.round((end-start)/(1000*60*60*24));
 
-    if (nights <= 0) {
+    if(nights <= 0) {
         alert("Check-out date must be after check-in date.");
         return;
     }
 
-    // DEMO RULE: base room rate covers 2 adults per room.
-    // Extra guest charges are examples and must be confirmed.
-    let extraAdults = Math.max(0, adults - (rooms * 2));
-    let extraAdultCharge = 500;
-    let childCharge = 300;
-
-    calculatedTotal = (
-        (planRate * rooms) +
-        (extraAdults * extraAdultCharge) +
-        (children * childCharge)
-    ) * nights;
-
-    document.getElementById("result").innerHTML =
-        "Total Price: ₹" + calculatedTotal.toLocaleString("en-IN") +
-        "<br><small>" + nights + " Night(s)</small>";
-}
-
-function sendWhatsApp() {
-
-    if (calculatedTotal <= 0) {
-        alert("Please calculate your price first.");
+    if(rooms < 1 || adults < 1 || children < 0 ||
+       !Number.isInteger(rooms) ||
+       !Number.isInteger(adults) ||
+       !Number.isInteger(children)) {
+        alert("Please enter valid guest and room numbers.");
         return;
     }
 
-    let plan = document.getElementById("plan");
-    let rooms = document.getElementById("rooms").value;
-    let adults = document.getElementById("adults").value;
-    let children = document.getElementById("children").value;
-    let checkin = document.getElementById("checkin").value;
-    let checkout = document.getElementById("checkout").value;
+    const rate = mealPrices[mealPlan];
 
-  let message = `🏨 *TRIPSTAY – BOOKING ENQUIRY*
+    const includedAdults = rooms * 2;
+    const extraAdults = Math.max(0, adults-includedAdults);
 
-Hello Ret Mahal Pushkar Team!
+    const roomAmount = rate * rooms * nights;
+    const extraAdultAmount = extraAdults * extraAdultCharge * nights;
+    const childAmount = children * childCharge * nights;
+
+    const totalPrice = roomAmount + extraAdultAmount + childAmount;
+
+    bookingData = {
+        hotel,
+        checkin,
+        checkout,
+        nights,
+        rooms,
+        adults,
+        children,
+        mealPlan,
+        rate,
+        totalPrice
+    };
+
+    document.getElementById("hotelResult").textContent =
+        "Hotel: " + hotel;
+
+    document.getElementById("dateResult").textContent =
+        "Check-in: " + checkin + " | Check-out: " + checkout;
+
+    document.getElementById("nightResult").textContent =
+        "Total Nights: " + nights;
+
+    document.getElementById("roomResult").textContent =
+        "Rooms: " + rooms;
+
+    document.getElementById("guestResult").textContent =
+        "Adults: " + adults + " | Children: " + children;
+
+    document.getElementById("mealResult").textContent =
+        "Meal Plan: " + mealPlan;
+
+    document.getElementById("totalResult").textContent =
+        "Estimated Total: ₹" + totalPrice.toLocaleString("en-IN");
+
+    document.getElementById("resultBox").style.display = "block";
+
+    document.getElementById("resultBox").scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+}
+
+// ====================================
+// WHATSAPP BOOKING ENQUIRY
+// ====================================
+
+function sendWhatsApp() {
+
+    if(!bookingData) {
+        alert("Please calculate your booking price first.");
+        return;
+    }
+
+    const b = bookingData;
+
+    const message = `🏨 *TRIPSTAY - BOOKING ENQUIRY*
+
+Hello ${b.hotel} Team!
 
 I would like to enquire about room availability.
 
-━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━
 📍 *HOTEL DETAILS*
-Hotel: Ret Mahal, Pushkar
+Hotel: ${b.hotel}
 
 📅 *BOOKING DETAILS*
-Check-in: ${checkin}
-Check-out: ${checkout}
-Total Nights: ${nights}
+Check-in: ${b.checkin}
+Check-out: ${b.checkout}
+Total Nights: ${b.nights}
 
 👥 *GUEST DETAILS*
-Rooms: ${rooms}
-Adults: ${adults}
-Children: ${children}
+Rooms: ${b.rooms}
+Adults: ${b.adults}
+Children: ${b.children}
 
 🍽️ *MEAL PLAN*
-${mealPlan}
+${b.mealPlan}
 
 💰 *PRICE DETAILS*
-Estimated Amount: ₹${totalPrice}
+Estimated Amount: ₹${b.totalPrice.toLocaleString("en-IN")}
 
-━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━
 
 Please confirm room availability and final booking price.
 
 Thank you!
-Team TripStay`;
+*Team TripStay*`;
 
-window.open(
-    "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
-    "_blank"
-);
+    const url = "https://wa.me/" + phone +
+        "?text=" + encodeURIComponent(message);
+
+    window.open(url,"_blank");
+}
+
+// ====================================
+// SEARCH HOTELS
+// ====================================
+
+function searchHotels() {
+
+    const location = document.getElementById("searchLocation")
+        .value.trim().toLowerCase();
+
+    const cards = document.querySelectorAll(".hotel-card");
+    let visible = 0;
+
+    cards.forEach(card => {
+
+        if(!card.querySelector("img")) return;
+
+        const text = card.innerText.toLowerCase();
+
+        if(!location || text.includes(location)) {
+            card.style.display = "";
+            visible++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    document.getElementById("noHotels").style.display =
+        visible === 0 ? "block" : "none";
+
+    document.getElementById("hotels").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+// ====================================
+// SEARCH DATE COPY
+// ====================================
+
+document.getElementById("searchCheckin").addEventListener("change", function() {
+    const date = this.value;
+    document.getElementById("checkin").value = date;
+
+    document.getElementById("searchCheckout").min = date;
+    document.getElementById("checkout").min = date;
+});
+
+document.getElementById("searchCheckout").addEventListener("change", function() {
+    document.getElementById("checkout").value = this.value;
+});
+
+document.getElementById("checkin").addEventListener("change", function() {
+    document.getElementById("checkout").min = this.value;
+});
 
 </script>
 
 </body>
 </html>
+```
