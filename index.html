@@ -495,25 +495,43 @@ function sendWhatsApp() {
     let checkin = document.getElementById("checkin").value;
     let checkout = document.getElementById("checkout").value;
 
-    let message =
-        "Hello, I want to enquire about Ret Mahal Pushkar.%0A" +
-        "Meal Plan: " + plan.options[plan.selectedIndex].text + "%0A" +
-        "Rooms: " + rooms + "%0A" +
-        "Adults: " + adults + "%0A" +
-        "Children: " + children + "%0A" +
-        "Check-in: " + checkin + "%0A" +
-        "Check-out: " + checkout + "%0A" +
-        "Estimated Price: Rs. " + calculatedTotal;
+  let message = `🏨 *TRIPSTAY – BOOKING ENQUIRY*
 
-    // Replace with hotel-approved WhatsApp number before publishing.
-    // Your WhatsApp number
-let phone = "917734807127";
+Hello Ret Mahal Pushkar Team!
+
+I would like to enquire about room availability.
+
+━━━━━━━━━━━━━━
+📍 *HOTEL DETAILS*
+Hotel: Ret Mahal, Pushkar
+
+📅 *BOOKING DETAILS*
+Check-in: ${checkin}
+Check-out: ${checkout}
+Total Nights: ${nights}
+
+👥 *GUEST DETAILS*
+Rooms: ${rooms}
+Adults: ${adults}
+Children: ${children}
+
+🍽️ *MEAL PLAN*
+${mealPlan}
+
+💰 *PRICE DETAILS*
+Estimated Amount: ₹${totalPrice}
+
+━━━━━━━━━━━━━━
+
+Please confirm room availability and final booking price.
+
+Thank you!
+Team TripStay`;
 
 window.open(
     "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
     "_blank"
 );
-}
 
 </script>
 
